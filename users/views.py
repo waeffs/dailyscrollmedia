@@ -28,7 +28,8 @@ def register():
             flash('User already Exists', 'alert-warning')
         return redirect(url_for('users.login'))
 
-    return render_template ('signup.html', form=form)
+    #return render_template ('signup.html', form=form)
+    return redirect(url_for('users.login'))
 
 
 
@@ -99,6 +100,29 @@ def user_posts(username):
     user = User.query.filter_by(username=username).first_or_404()
     blog_posts = BlogPost.query.filter_by(author=user).order_by(BlogPost.date.desc()).paginate(page=page, per_page=5)
     return render_template('user_blog_posts.html', blog_posts=blog_posts, user=user)
+
+@users.route("/<int:blog_post_id>/update", methods=['GET', 'POST'])
+@login_required
+def update(blog_post_id):
+    blog_post = BlogPost.query.get_or_404(blog_post_id)
+    if blog_post.author != current_user:
+        # Forbidden, No Access
+        abort(403)
+
+    form = BlogPostForm()
+    if form.validate_on_submit():
+        blog_post.title = form.title.data
+        blog_post.text = form.text.data
+        db.session.commit()
+        flash('Post Updated')
+        return redirect(url_for('blog_posts.blog_post', blog_post_id=blog_post.id))
+    # Pass back the old blog post information so they can start again with
+    # the old text and title.
+    elif request.method == 'GET':
+        form.title.data = blog_post.title
+        form.text.data = blog_post.text
+    return render_template('create_post.html', title='Update',
+                           form=form)
 
 
 
