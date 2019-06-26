@@ -8,7 +8,7 @@
 				<div class="jumbotron">
 					<img src="{{url_for('static', filename='blog_pics/' + post.blog_image)}}" alt="">
 				  <h1>{{ post.title | safe }}</h1>
-				  <h2>Written by: {{post.author.username}}</h2>
+				  <h2>Written by: <h6>{{post.author.username}}</h6></h2>
 				  <h3>Published: {{ post.date.strftime('%B %d, %Y') }}</h3>
 				  <p>{{post.text | safe }}</p>
 				   {% if post.author == current_user %}

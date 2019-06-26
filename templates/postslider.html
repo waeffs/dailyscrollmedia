@@ -34,17 +34,17 @@
 								<img class="img-fluid" src="static/img/posts/carousel/post2.jpg" width="640" height="630" alt="">
 							</div>
 							<div class="post-details">
-								<h2><a href="#">{{ post.title[:25] }}</a></h2>
+								<h2><a href="#">{{ post.title[:25] | safe }}</a></h2>
 								<div class="post-content d-flex justify-content-between">
 									<div class="post-meta">
 										<div class="thumb"><img src="{{url_for('static', filename='blog_pics/small/' + post.blog_thumbnail)}}" alt=""></div>
 										<div class="c-desc">
-											<h6>{{ post.author.username }}</h6>
+											<h6>{{ post.author.username | safe }}</h6>
 											<p><span class="lnr lnr-calendar-full"></span>{{ post.date.strftime('%Y-%m-%d') }}</p>
 										</div>
 									</div>
 									<div class="details">
-										<p>{{post.text[:200]}}</p>
+										<p>{{post.text[:200]}} | safe </p>
 									</div>
 								</div>
 							</div>
