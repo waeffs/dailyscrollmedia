@@ -3,7 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from puppycompanyblog import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from puppycompanyblog.models import User, BlogPost, PhoneNumbers, CodeNumber
-from puppycompanyblog.users.forms import SignupForm, LoginForm, UpdateUserForm, NumberForm, CodeForm
+from puppycompanyblog.users.forms import SignupForm, LoginForm, UpdateUserForm, NumberForm, CodeForm, BlogPostForm
 from puppycompanyblog.users.email import send_email
 from puppycompanyblog.users.picture_handler import add_profile_pic
 
