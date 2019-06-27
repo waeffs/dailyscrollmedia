@@ -61,7 +61,7 @@ def blog_post(blog_post_id):
                             date=blog_post.date,post=blog_post, blog_posts=blog_posts, latest_posts=latest_posts, top_posts=top_posts
     )
 
-@blog_posts.route("/<int:blog_post_id>/update", methods=['GET', 'POST'])
+@blog_posts.route('/<int:blog_post_id>/update', methods=['GET', 'POST'])
 @login_required
 def update(blog_post_id):
     blog_post = BlogPost.query.get_or_404(blog_post_id)
