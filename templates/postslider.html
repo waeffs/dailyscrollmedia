@@ -34,7 +34,7 @@
 								<img class="img-fluid" src="static/img/posts/carousel/post2.jpg" width="640" height="630" alt="">
 							</div>
 							<div class="post-details">
-								<h2><a href="#">{{ post.title | safe }}</a></h2>
+								<h2><a href="#">{{ post.title[:35] | safe }}</a></h2>
 								<div class="post-content d-flex justify-content-between">
 									<div class="post-meta">
 										<div class="thumb"><img src="{{url_for('static', filename='blog_pics/small/' + post.blog_thumbnail)}}" alt=""></div>
