@@ -9,6 +9,6 @@ class BlogPostForm(FlaskForm):
     # we'll grab the date automatically from the Model later
     title = StringField('Title', validators=[DataRequired()])
     text = TextAreaField('Text', validators=[DataRequired()])
-    category = SelectField('Category', choices=[('politics', 'politics'),('lifestyle','lifestyle'), ('business', 'business'),('sports','sports')], validators=[DataRequired()])
+    category = SelectField('Category', choices=[('politics', 'politics'),('lifestyle','lifestyle'), ('business', 'business'),('sports','sports'), ('story time', 'story time'), ('education', 'education'), ('nostalgia', 'nostalgia'), ('health', 'health')], validators=[DataRequired()])
     blog_image = FileField('Cover Photo', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
     submit = SubmitField('BlogPost')
