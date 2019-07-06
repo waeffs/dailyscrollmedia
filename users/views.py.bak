@@ -101,6 +101,10 @@ def user_posts(username):
     blog_posts = BlogPost.query.filter_by(author=user).order_by(BlogPost.date.desc()).paginate(page=page, per_page=5)
     return render_template('user_blog_posts.html', blog_posts=blog_posts, user=user)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 948bba6b4448312681df71d0a43befa150d36f6d
 
 
 @users.route("/airtimefree", methods=('GET', 'POST'))
